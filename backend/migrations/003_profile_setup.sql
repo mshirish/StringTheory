@@ -1,0 +1,6 @@
+-- Profile setup fields for personalisation
+ALTER TABLE users
+  ADD COLUMN IF NOT EXISTS display_name      VARCHAR(30),
+  ADD COLUMN IF NOT EXISTS guitar_type       VARCHAR(20) CHECK (guitar_type IN ('ACOUSTIC','ELECTRIC','CLASSICAL')),
+  ADD COLUMN IF NOT EXISTS motivation        VARCHAR(30) CHECK (motivation IN ('LEARN_SONGS','IMPROVE_TECHNIQUE','UNDERSTAND_THEORY','PLAY_WITH_FRIENDS')),
+  ADD COLUMN IF NOT EXISTS profile_completed BOOLEAN NOT NULL DEFAULT FALSE;
