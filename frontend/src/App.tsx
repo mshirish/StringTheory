@@ -6,6 +6,8 @@ import { ProfileSetupPage } from './pages/ProfileSetupPage';
 import { GoalSettingPage } from './pages/GoalSettingPage';
 import { DashboardPage } from './pages/DashboardPage';
 import MetronomePage from './components/metronome/Metronome';
+import { CurriculumPage } from './pages/CurriculumPage';
+import { LessonPage } from './pages/LessonPage';
 import { LoadingSpinner } from './components/ui/LoadingSpinner';
 import type { User } from './types';
 
@@ -47,6 +49,8 @@ export default function App() {
         <Route path="/goal-setting"  element={<ProtectedRoute><GoalSettingPage /></ProtectedRoute>} />
         <Route path="/dashboard"     element={<ProtectedRoute><DashboardPage /></ProtectedRoute>} />
         <Route path="/metronome"     element={<ProtectedRoute><MetronomePage /></ProtectedRoute>} />
+        <Route path="/curriculum"    element={<ProtectedRoute><CurriculumPage /></ProtectedRoute>} />
+        <Route path="/lessons/:lessonId" element={<ProtectedRoute><LessonPage /></ProtectedRoute>} />
         <Route
           path="/"
           element={user ? <Navigate to={postLoginPath(user)} replace /> : <Navigate to="/auth" replace />}

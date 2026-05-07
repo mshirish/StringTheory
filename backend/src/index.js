@@ -13,6 +13,7 @@ import { buildAuthContext } from './middleware/auth.js';
 import { initSocket } from './socket/index.js';
 import pool from './config/database.js';
 import redis from './config/redis.js';
+import curriculumRouter from './routes/curriculum.js';
 
 const PORT = process.env.PORT || 4000;
 
@@ -62,6 +63,9 @@ async function bootstrap() {
     const redisOk = await redis.ping().then(() => true).catch(() => false);
     res.json({ status: 'ok', db: dbOk, redis: redisOk });
   });
+
+  // REST curriculum API
+  app.use('/api', curriculumRouter);
 
   // GraphQL endpoint — context injects decoded user from JWT
   app.use(
